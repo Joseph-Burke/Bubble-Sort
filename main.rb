@@ -33,7 +33,7 @@ puts bubble_sort(test_array)
 def bubble_sort_by(array)
   count = 0
   while count < array.length - 1
-    for i in (0..array.length-2) do
+    for i in (0..array.length - 2) do
       left_item, right_item = array[i], array[i+1]
       if (yield left_item, right_item).positive?
         array[i], array[i+1] = right_item, left_item
@@ -48,3 +48,5 @@ puts (bubble_sort_by(["A very long string","hi","hello","hey","excellent","pyjam
   |left,right|
   left.length - right.length
 end)
+
+# The second-to-last element will always be at array[array.length - 2]
