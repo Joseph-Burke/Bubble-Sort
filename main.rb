@@ -28,40 +28,58 @@ def bubble_sort(array)
 end
 
 test_array = [5,16,-4,99,72,61,61,60,5]
-puts bubble_sort(test_array)
+# puts bubble_sort(test_array)
+
+# Bubble Sort By Method
+# def bubble_sort_by
+#
+#   yield 2 3
+#
+#   # for i in (0..arr.length - 1) do
+#   #   value_1 = arr[i]
+#   #   value_2 = arr[i+1]
+#   #
+#   #   if arr[i] > arr[i +1]
+#   #     arr[i] = arr[i+1]
+#   #     arr[i + 1] = arr[i]
+#   #   end
+#   # end
+#   # return arr
+# end
 
 
-def bubble_sort_by(arr)
 
-  
-  # count= 1
-  
-  for i in (0..arr.length - 1) do
-    arr_1 = arr[i]
-    arr_2 = arr[i+1]
+# Method
+def bubble_sort_by(array)
 
-    if arr[i] > arr[i +1]
-      arr[i] = arr[i +1]
-      arr[i + 1] = arr[i]
-      
+  for i in (0..array.length - 1) do
+    left_item = array[i]
+    right_item = array[i+1]
+
+    block_return = yield array[i], array[i+1]
+    # Save this to a variable.
+    # Run a conditional to check its value.
+    if block_return == 1
+      # Swap the values
+      array[i] = right_item
+      array[i+1] = left_item
     end
-    
   end
-  return arr
-
 end
 
-bubble_sort_by(["hi","hello","hey"]) 
+test_2 = ["hi","hello","hey"]
 
-=begin
-do |left,right|
-  left.length - right.length
- end
+# Block
+bubble_sort_by(["hello", "hi"]) do |left_item, right_item|
+  if left_item.length > right_item.length
+    -1
+  elsif left_item.length == right_item.length
+    0
+  else
+    1
+  end
+end
 
- 
 
-if (arr_1 > arr_2) and arr.
-  arr[i], arr[i+1] = arr[i+1], arr[i]
 
-=end
-# end
+# bubble_sort_by(["hi","hello","hey"])
